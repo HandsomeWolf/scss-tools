@@ -17,3 +17,10 @@
     @content;
   }
 }
+
+// 伪类选择器
+@mixin pseudo($pseudo) {
+  @at-root #{&}#{":#{$pseudo}"} {
+    @content;
+  }
+}
