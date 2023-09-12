@@ -79,3 +79,13 @@
     @warn "`#{$size}` is not a valid length for the `#{$argName}` argument. Please provide a valid length."; // Provide a warning instead of an error
   }
 }
+
+@function is-string($value) {
+  @if type-of($value) == "string" {
+    // Check if $value is a string (检查 $value 是否为字符串)
+    @return true;
+  } @else {
+    @warn "`#{$value}` is not a valid string.";
+    @return false;
+  }
+}
