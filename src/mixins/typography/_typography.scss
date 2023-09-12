@@ -12,11 +12,11 @@
   word-wrap: normal;
 }
 
-@mixin ellipsis-line($line-clamp) {
+@mixin text-overflow($line) {
   -webkit-box-orient: vertical;
   display: block;
   display: -webkit-box;
-  -webkit-line-clamp: $line-clamp;
+  -webkit-line-clamp: $line;
   overflow: hidden;
   text-overflow: ellipsis;
 }
