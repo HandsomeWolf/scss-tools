@@ -1,14 +1,6 @@
 @import "./src/mixins/color/color";
-
-$dark-gray: #383942;
-$light-gray: #606064;
-$medium-gray: #4a4a4a;
-
-@mixin card-title() {
-  @include height(84rpx);
-
-  color: #383942;
-  font-size: 30rpx;
-  margin: 10px 20px;
-  padding-top: 32rpx;
-}
+@import "./src/mixins/layout/layout";
+@import "./src/mixins/shapes/shapes";
+@import "./src/mixins/typography/typography";
+@import "./src/mixins/typography/font-stacks";
+@import "./src/mixins/selector/selector";
