@@ -23,10 +23,10 @@
 
 @mixin size($width, $height: $width) {
   $valid-height: check-size($height, "height");
-  $valid-hidth: check-size($width, "width");
+  $valid-width: check-size($width, "width");
 
-  height: $validHeight;
-  width: $validWidth;
+  height: $valid-height;
+  width: $valid-width;
 }
 
 @mixin clearfix {
