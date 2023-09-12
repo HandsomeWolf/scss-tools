@@ -1,27 +1,19 @@
 @charset "UTF-8";
 
-@mixin prefix($prefix, $name) {
-  @if is-string($name) {
-    #{if($prefix, "-#{$prefix}", "")}#{$name} {
-      @content;
-    }
-  }
-}
-
 @mixin B($block) {
-  @include prefix("", $block) {
+  .#{$block} {
     @content;
   }
 }
 
 @mixin E($element) {
-  @include prefix("__", $element) {
+  &__#{$element} {
     @content;
   }
 }
 
 @mixin M($modifier) {
-  @include prefix("--", $modifier) {
+  &--#{$modifier} {
     @content;
   }
 }
