@@ -34,4 +34,8 @@
   @return adjust-hue($color, $degrees);
 }
 
+@function rgb2hex($color) {
+  @return unquote("#" + #{string.slice(color.ie-hex-str($color), 4)});
+}
+
 // TODO:参考sass官网
