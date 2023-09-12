@@ -53,11 +53,11 @@
 }
 
 @mixin flex(
-  $direction: "row",
-  $wrap: "nowrap",
-  $content: "center",
-  $justify: "center",
-  $items: "center"
+  $direction: row,
+  $wrap: nowrap,
+  $content: center,
+  $justify: center,
+  $items: center
 ) {
   align-content: $content;
   align-items: $items;
