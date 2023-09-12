@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin v-center-text($height) {
+@mixin vertical-center-text($height) {
   height: $height;
   line-height: $height;
 }
@@ -22,11 +22,8 @@
 }
 
 @mixin size($width, $height: $width) {
-  $valid-height: check-size($height, "height");
-  $valid-width: check-size($width, "width");
-
-  height: $valid-height;
-  width: $valid-width;
+  height: $height;
+  width: $width;
 }
 
 @mixin clearfix {
@@ -98,7 +95,7 @@
 }
 
 @mixin position($position: relative, $box-edge-values: 0) {
-  $box-edge-values: _unpack-shorthand($box-edge-values);
+  // $box-edge-values: 52rpx 50rpx null null;
   $offsets: (
     "top": list.nth($box-edge-values, 1),
     "right": list.nth($box-edge-values, 2),
@@ -111,8 +108,6 @@
   @each $offset, $value in $offsets {
     @if is-length($value) {
       #{$offset}: $value;
-    } @else {
-      @warn "Invalid value `#{$value}` for `#{$offset}`. Expected a length.";
     }
   }
 }

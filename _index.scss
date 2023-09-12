@@ -1,3 +1,8 @@
+@use "sass:list";
+@import "./src//utils/validators";
+@import "./src//utils/compact-shorthand";
+@import "./src//utils/directional-property";
+@import "./src//utils/strip-unit";
 @import "./src/mixins/color/color";
 @import "./src/mixins/layout/layout";
 @import "./src/mixins/shapes/shapes";
