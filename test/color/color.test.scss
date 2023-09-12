@@ -1,0 +1,10 @@
+@use "true" as *;
+@import "../../index";
+
+@include describe("Zip [function]") {
+  @include it("Zips multiple lists into a single multi-dimensional list") {
+    // Assert the expected results
+
+    @include assert-equal(shade(#ccff00, 10%), #b8e600);
+  }
+}

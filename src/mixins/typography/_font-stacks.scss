@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+$font-stacks: (
+  "system": (
+    -apple-system,
+    blinkmacsystemfont,
+    "Segoe UI",
+    roboto,
+    oxygen-sans,
+    ubuntu,
+    cantarell,
+    "Helvetica Neue",
+    sans-serif,
+  ),
+  "roboto": (
+    "Roboto",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "open-sans": (
+    "Open Sans",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "lato": (
+    "Lato",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "montserrat": (
+    "Montserrat",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "source-sans-pro": (
+    "Source Sans Pro",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "raleway": (
+    "Raleway",
+    "Helvetica Neue",
+    arial,
+    sans-serif,
+  ),
+  "consolas": (
+    "Consolas",
+    "Monaco",
+    "Lucida Console",
+    monospace,
+  ),
+  "courier-new": (
+    "Courier New",
+    "Courier",
+    "Lucida Sans Typewriter",
+    "Lucida Typewriter",
+    monospace,
+  ),
+  "monaco": (
+    "Monaco",
+    "Consolas",
+    "Lucida Console",
+    monospace,
+  ),
+);
+
+@function font-stack($name) {
+  @return map.get($font-stacks, $name);
+}
+
+// e.g
+// body {
+//   @include font-stack('lucida-grande');
+// }
+@mixin font-stack($name) {
+  font-family: font-stack($name);
+}

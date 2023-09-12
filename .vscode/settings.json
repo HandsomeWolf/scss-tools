@@ -1,0 +1,26 @@
+{
+  "editor.formatOnSave": true,
+  "stylelint.enable": true,
+  "stylelint.config": null,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "yaml",
+    "vue",
+    "markdown",
+    "md",
+    "json",
+    "jsonc"
+  ],
+  "stylelint.snippet": ["css", "less", "postcss", "scss", "vue"],
+  "stylelint.validate": ["css", "less", "postcss", "vue", "scss"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  }
+}

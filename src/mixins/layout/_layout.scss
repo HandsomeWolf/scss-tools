@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+@mixin absolute-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin v-center-text($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin text-overflow($line) {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin size($width, $height: $width) {
+  $valid-height: check-size($height, "height");
+  $valid-hidth: check-size($width, "width");
+
+  height: $validHeight;
+  width: $validWidth;
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > * {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@mixin flex(
+  $direction: "row",
+  $wrap: "nowrap",
+  $content: "center",
+  $justify: "center",
+  $items: "center"
+) {
+  align-content: $content;
+  align-items: $items;
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+}
+
+@mixin flex-start {
+  @include flex($justify: flex-start);
+}
+
+@mixin flex-end {
+  @include flex($justify: flex-end);
+}
+
+@mixin flex-center {
+  @include flex;
+}
+
+@mixin flex-between {
+  @include flex($justify: space-between);
+}
+
+@mixin flex-around {
+  @include flex($justify: space-around);
+}
+
+@mixin flex-evenly {
+  @include flex($justify: space-evenly);
+}
+
+@mixin flex-custom($direction, $wrap, $align-content, $justify, $align-items) {
+  @include flex($direction, $wrap, $align-content, $justify, $align-items);
+}
+
+@mixin position($position: relative, $box-edge-values: 0) {
+  $box-edge-values: _unpack-shorthand($box-edge-values);
+  $offsets: (
+    "top": list.nth($box-edge-values, 1),
+    "right": list.nth($box-edge-values, 2),
+    "bottom": list.nth($box-edge-values, 3),
+    "left": list.nth($box-edge-values, 4),
+  );
+
+  position: $position;
+
+  @each $offset, $value in $offsets {
+    @if is-length($value) {
+      #{$offset}: $value;
+    } @else {
+      @warn "Invalid value `#{$value}` for `#{$offset}`. Expected a length.";
+    }
+  }
+}
+
+// 参考《CSS揭秘》

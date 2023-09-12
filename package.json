@@ -1,0 +1,39 @@
+{
+  "name": "@handsomewolf/scss-tools",
+  "version": "1.0.0",
+  "description": "Commonly used scss tools",
+  "keywords": [
+    "scss",
+    "scss tools",
+    "mixins"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/HandsomeWolf",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HandsomeWolf/scss-tools"
+  },
+  "author": "HandsomeWolf <55856773@qq.com> (https://github.com/handsomewolf)",
+  "main": "_index.scss",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "sassdoc": "npx sassdoc core/ --parse --verbose --strict",
+    "stylelint": "npx stylelint 'src/**/*.scss'",
+    "test": "jest --watchAll"
+  },
+  "dependencies": {
+    "postcss-html": "^1.5.0",
+    "stylelint": "^15.10.3"
+  },
+  "devDependencies": {
+    "@handsomewolf/eslint-config": "^0.2.1",
+    "@handsomewolf/stylelint-config": "^1.0.3",
+    "jest": "^29.6.4",
+    "jest-css-modules-transform": "^4.4.2",
+    "sass": "^1.66.1",
+    "sass-true": "^7.0.0"
+  }
+}

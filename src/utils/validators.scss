@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+@function is-color($color) {
+  @if type-of($color) == color or $color == "currentColor" {
+    @return true;
+  } @else {
+    @warn "`#{$color}` is not a valid color.";
+    @return false;
+  }
+}
+
+@function is-length($value) {
+  @if type-of($value) !=
+    "null" and
+    (
+      str-slice($value + "", 1, 4) ==
+        "calc" or
+        str-slice($value + "", 1, 3) ==
+        "var" or
+        str-slice($value + "", 1, 3) ==
+        "env" or
+        index(auto inherit initial 0, $value) or
+        (type-of($value) == "number" and not(unitless($value)))
+    )
+  {
+    @return true;
+  } @else {
+    @warn "`#{$value}` is not a valid length.";
+    @return false;
+  }
+}
+
+@function is-number($value) {
+  @if type-of($value) == "number" {
+    // Check if $value is a number (检查 $value 是否为数字)
+    @return true;
+  } @else {
+    @warn "`#{$value}` is not a valid number.";
+    @return false;
+  }
+}
+
+@function is-size($value) {
+  @if is-length($value) or
+    contains("fill" "fit-content" "min-content" "max-content", $value)
+  {
+    @return true;
+  } @else {
+    @warn "`#{$value}` is not a valid size.";
+    @return false;
+  }
+}
+
+@function contains($list, $values...) {
+  @each $value in $values {
+    @if not index($list, $value) {
+      // Check if $value is in $list
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+@function contains-falsy($list) {
+  @each $item in $list {
+    @if not $item {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+
+@function check-size($size, $argName) {
+  @if is-size($size) {
+    @return $size;
+  } @else {
+    @warn "`#{$size}` is not a valid length for the `#{$argName}` argument. Please provide a valid length."; // Provide a warning instead of an error
+  }
+}

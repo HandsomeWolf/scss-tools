@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+// 减少对比度
+@function tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}
+
+// 增加对比度
+@function shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+
+// TODO:1.饱和度；2.透明度；3.色相；4.对比度；5.rgba与#cf0颜色互转
+
+//  amount：这个参数通常用于saturate()、desaturate()和transparentize()等函数，表示调整的程度，通常是一个百分比值。例如，saturate($color, 20%)会增加颜色的饱和度20%。
+// 饱和度
+@function saturate($color, $amount) {
+  @return saturate($color, $amount);
+}
+
+// 去饱和
+@function desaturate($color, $amount) {
+  @return desaturate($color, $amount);
+}
+
+// 透明化
+@function transparentize($color, $amount) {
+  @return rgba($color, 1 - $amount);
+}
+
+// degrees：这个参数用于adjust-hue()函数，表示调整色相的角度，范围是0到360。例如，adjust-hue($color, 60)会将颜色的色相向右旋转60度。
+// 色相
+@function adjust-hue($color, $degrees) {
+  @return adjust-hue($color, $degrees);
+}
+
+// TODO:参考sass官网

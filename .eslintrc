@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "extends": ["@handsomewolf/eslint-config"],
+  "rules": {
+    "unicorn/prefer-module": "off",
+    "unicorn/no-null": "off"
+  },
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly"
+  }
+}

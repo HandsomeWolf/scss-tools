@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+// 定义一个函数来设置 border-color 和 border-width
+// Define a function to set border-color and border-width
+@function set-border($color, $widths) {
+  @return ("border-color": $color, "border-width": $widths);
+}
+
+@mixin triangle($direction, $width, $height, $color) {
+  @if not
+    index(
+      "up" "up-right" "right" "down-right" "down" "down-left" "left" "up-left",
+      $direction
+    )
+  {
+    @error "Direction must be `up`, `up-right`, `right`, `down-right`, " +
+      "`down`, `down-left`, `left` or `up-left`.";
+  } @else if not _is-color($color) {
+    @error "`#{$color}` is not a valid color for the `$color` argument in " +
+      "the `triangle` mixin.";
+  } @else {
+    border-style: solid;
+    height: 0;
+    width: 0;
+
+    // 定义一个 map 来存储每个方向的 border-color 和 border-width
+    // Define a map to store the border-color and border-width for each direction
+    $directions: (
+      "up": set-border(transparent transparent $color, 0 ($width / 2) $height),
+      "up-right":
+        set-border(
+          transparent $color transparent transparent,
+          0 $width $width 0
+        ),
+      "right":
+        set-border(
+          transparent transparent transparent $color,
+          ($height / 2) 0 ($height / 2) $width
+        ),
+      "down-right":
+        set-border(transparent transparent $color, 0 0 $width $width),
+      "down":
+        set-border($color transparent transparent, $height ($width / 2) 0),
+      "down-left":
+        set-border(
+          transparent transparent transparent $color,
+          $width 0 0 $width
+        ),
+      "left":
+        set-border(
+          transparent $color transparent transparent,
+          ($height / 2) $width ($height / 2) 0
+        ),
+      "up-left": set-border($color transparent transparent, $width $width 0 0),
+    );
+
+    // 使用 @each 指令来遍历所有的方向
+    // Use the @each directive to iterate over all directions
+    @each $dir, $value in $directions {
+      @if $dir == $direction {
+        @include map-deep-get($value);
+      }
+    }
+  }
+}
+
+// TODO:胶囊按钮，参考《CSS揭秘》
